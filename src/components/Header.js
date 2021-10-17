@@ -8,14 +8,12 @@ import HomeIcon from '@mui/icons-material/Home'
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
-import { fontFamily } from '@mui/system'
 
 function Header() {
     return (
         <div className="header">
             <div className="header-left">
                 <img src={logo} alt="brand logo" />
-                {/* <h1 style={{ marginRight: "15px", marginLeft: "15px", fontFamily: "'Open Sans', sans-serif"}}>3D Models</h1> */}
 
                 <div className="header-search">
                     <SearchIcon />
