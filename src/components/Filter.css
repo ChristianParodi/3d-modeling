@@ -2,7 +2,6 @@
   position: sticky;
   top: 100px;
   flex: 0.2;
-  border-radius: 10px;
   height: fit-content;
   border: 1px solid lightgray;
   border-radius: 10px;
@@ -13,4 +12,26 @@
   object-fit: contain;
   height: 20px;
   margin-right: 10px;
+}
+
+#nested-list-subheader {
+  display: flex;
+  align-items: center;
+}
+
+.filter-title {
+  margin-left: 10px;
+}
+
+.price-container {
+  margin-left: 16px;
+}
+
+.price-filter {
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  margin-right: 16px;
 }

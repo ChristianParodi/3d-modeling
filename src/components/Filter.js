@@ -7,18 +7,28 @@ import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import Slider from '@mui/material/Slider';
 import Collapse from '@mui/material/Collapse';
+
+import { grey } from '@mui/material/colors';
 
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import CategoryIcon from '@mui/icons-material/Category';
+import EuroIcon from '@mui/icons-material/Euro';
 
 export default function Filter() {
   const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
     setOpen(open => !open);
+  };
+
+  const [price, setPrice] = React.useState([0, 100]);
+
+  const handlePriceChange = (event, newPrice) => {
+    setPrice(newPrice);
   };
 
   return (
@@ -30,7 +40,7 @@ export default function Filter() {
                 subheader={
                     <ListSubheader component="div" id="nested-list-subheader">
                         <FilterListIcon />
-                        <span className="filter-title">Filtro</span>
+                        <h3 className="filter-title">Filtri</h3>
                     </ListSubheader>
                 }
                 >
@@ -57,6 +67,25 @@ export default function Filter() {
                     </ListItemButton>
                     </List>
                 </Collapse>
+                <ListItemText>
+                    <div className="price-container">
+                        <div className="price-filter">
+                            <ListItemIcon>
+                                <EuroIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Prezzo" />
+                        </div>
+                        <div className="slider">
+                            <Slider
+                                getAriaLabel={() => 'Price range'}
+                                value={price}
+                                onChange={handlePriceChange}
+                                valueLabelDisplay="auto"
+                                getAriaValueText={price => `${price}€`}
+                            />                        
+                        </div>
+                    </div>
+                </ListItemText>
             </List>
       </div>
     

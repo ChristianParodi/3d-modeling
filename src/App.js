@@ -10,9 +10,9 @@ function App() {
       
       <div className="app-body">
         <Filter />
-      </div>
         {/* Posts */}
         {/* Filter */}
+      </div>
       {/* Footer */}
     </div>
   );
