@@ -1,10 +1,30 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './Feed.css'
 import Product from './Product'
+
+import { db } from './firebase.js'
 
 import Grid from '@mui/material/Grid'
 
 function Feed() {
+    const [products, setProducts] = useState([])
+
+    /* when the page loads, connect to db */
+    useEffect(() => {
+        db.collection('products').onSnapshot(snapshot =>
+            setProducts(
+                snapshot.docs.map(doc => (
+                    {
+                        id: doc.id,
+                        data: doc.data()
+                    }
+                ))
+            ))
+    }, [])
+
+    const uploadProduct = e => {
+        e.preventDefault()
+    }
 
     return (
         <div className="feed">
