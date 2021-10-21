@@ -23,7 +23,7 @@ import EuroIcon from '@mui/icons-material/Euro';
 import ReorderIcon from '@mui/icons-material/Reorder';
 
 export default function Filter() {
-    const [open, setOpen] = useState(false);
+    const [openCategory, setOpenCategory] = useState(false);
     const [selectedMenuIndex, setSelectedMenuIndex] = useState(0)
     const [anchorEl, setAnchorEl] = useState(null)
     const [price, setPrice] = React.useState([0, 100]);
@@ -36,8 +36,9 @@ export default function Filter() {
         'Prezzo: decrescente',
     ]
 
-    const handleClick = () => {
-        setOpen(open => !open);
+    /* Category interaction*/
+    const handleCategoryClick = () => {
+        setOpenCategory(openCategory => !openCategory);
     };
 
     /* Menu interaction */
@@ -118,14 +119,14 @@ export default function Filter() {
                 </Menu>
                 {/* end Order by */}
                 {/* Category */}
-                <ListItemButton onClick={handleClick}>
+                <ListItemButton onClick={handleCategoryClick}>
                     <ListItemIcon>
                         <CategoryIcon />
                     </ListItemIcon>
                     <ListItemText primary="Categorie" />
-                    {open ? <ExpandLess /> : <ExpandMore />}
+                    {openCategory ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
-                <Collapse in={open} timeout="auto" unmountOnExit>
+                <Collapse in={openCategory} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
                         <ListItemButton sx={{ pl: 10 }}>
                             <ListItemIcon >

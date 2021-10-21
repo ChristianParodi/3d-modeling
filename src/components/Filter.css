@@ -1,6 +1,6 @@
 .filter {
   position: sticky;
-  top: 100px;
+  top: 80px;
   flex: 0.2;
   height: fit-content;
   border: 1px solid lightgray;

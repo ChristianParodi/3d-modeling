@@ -11,7 +11,7 @@ import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 
 function Header() {
     return (
-        <div className="header">
+        <div className="header" style={{ backgroundColor: "white" }}>
             <div className="header-left">
                 <img src={logo} alt="brand logo" />
 
@@ -21,10 +21,10 @@ function Header() {
                 </div>
             </div>
             <div className="header-right">
-                <HeaderOption title="Home" Icon={HomeIcon}/>
-                <HeaderOption title="Chi siamo" Icon={SupervisorAccountIcon}/>
-                <HeaderOption title="Prodotti" Icon={ShoppingCartIcon}/>
-                <HeaderOption title="Contatti" Icon={ContactSupportIcon}/>
+                <HeaderOption title="Home" Icon={HomeIcon} />
+                <HeaderOption title="Chi siamo" Icon={SupervisorAccountIcon} />
+                <HeaderOption title="Prodotti" Icon={ShoppingCartIcon} />
+                <HeaderOption title="Contatti" Icon={ContactSupportIcon} />
             </div>
         </div>
     )
