@@ -2,19 +2,24 @@ import React from 'react';
 import './App.css';
 import Filter from './components/Filter';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Feed from './components/Feed';
+
+import { Container } from '@mui/material'
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Header />
 
-      <div className="app-body">
-        <Filter />
-        <Feed />
-        {/* Filter */}
-      </div>
-      {/* Footer */}
+      <Container fixed maxWidth="xl" style={{ backgroundColor: "white" }}>
+        <div className="app-body">
+          <Feed />
+          <Filter />
+          {/* Filter */}
+        </div>
+      </Container>
+      <Footer />
     </div>
   );
 }

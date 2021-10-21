@@ -13,7 +13,7 @@ function Product() {
 
     return (
         <Box
-            sx={{ boxShadow: shadow }}
+            sx={{ boxShadow: shadow, minWidth: "240px" }}
             onMouseOver={() => setShadow(5)}
             onMouseOut={() => setShadow(1)}
             style={{ cursor: "pointer" }}

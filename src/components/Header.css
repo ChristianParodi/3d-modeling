@@ -9,14 +9,8 @@
   z-index: 999;
 }
 
-@media only screen and (max-width: 600px){
-  .header-search > input {
-    width: 100px;
-  }
-
-  .header-search {
-    margin-right: 30px;
-  }
+.header > * {
+  background-color: white;
 }
 
 .header-left {
@@ -49,4 +43,20 @@
 
 .header-right {
   display: flex;
+}
+
+@media only screen and (max-width: 600px){
+  .header {
+    width: 128%;
+    max-width: 600px;
+  }
+
+  .header-search > input {
+    width: 80%;
+    min-width: 100px;
+  }
+
+  .header-search {
+    margin-right: 30px;
+  }
 }

@@ -15,22 +15,22 @@ function Feed() {
                 direction="row"
                 alignItems="center"
             >
-                <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
+                <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>
                     <Product />
                 </Grid>
-                <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
+                <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>
                     <Product />
                 </Grid>
-                <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
+                <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>
                     <Product />
                 </Grid>
-                <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
+                <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>
                     <Product />
                 </Grid>
-                <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
+                <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>
                     <Product />
                 </Grid>
-                <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
+                <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>
                     <Product />
                 </Grid>
             </Grid>
