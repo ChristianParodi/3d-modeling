@@ -16,7 +16,6 @@ function App() {
         <div className="app-body">
           <Feed />
           <Filter />
-          {/* Filter */}
         </div>
       </Container>
       <Footer />
