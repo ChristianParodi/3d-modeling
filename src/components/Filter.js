@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './Filter.css'
 
-import marvel_logo from './../assets/marvel_logo.svg'
-import dc_logo from './../assets/dc_logo.svg'
+import marvel_logo from './assets/marvel_logo.svg'
+import dc_logo from './assets/dc_logo.svg'
 
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';

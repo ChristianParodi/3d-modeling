@@ -1,7 +1,7 @@
 import React from 'react'
 import './Footer.css'
 
-import brand_logo from '../assets/brand_logo.jpg'
+import brand_logo from './assets/brand_logo.jpg'
 
 import {
     Grid,

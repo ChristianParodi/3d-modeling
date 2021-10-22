@@ -1,13 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&display=swap");
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   margin: 0;
 }
 
 body {
-  background-image: url('assets/body_img.jpg');
+  background-image: url("./components/assets/body_img.jpg");
 }
 
 .app-body {

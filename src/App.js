@@ -12,7 +12,7 @@ function App() {
     <div className="app">
       <Header />
 
-      <Container fixed maxWidth="xl" style={{ backgroundColor: "white" }}>
+      <Container fixed maxWidth="xl" style={{ backgroundColor: "white", height: "100vh" }}>
         <div className="app-body">
           <Feed />
           <Filter />

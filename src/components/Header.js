@@ -1,6 +1,6 @@
 import React from 'react'
 import './Header.css'
-import logo from './../assets/brand_logo.jpg'
+import logo from './assets/brand_logo.jpg'
 import HeaderOption from './HeaderOption'
 
 import SearchIcon from '@mui/icons-material/Search'
