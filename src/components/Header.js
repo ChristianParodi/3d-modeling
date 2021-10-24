@@ -9,7 +9,8 @@ import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 
-function Header() {
+function Header({ inputValue, setInputValue }) {
+
     return (
         <div className="header" style={{ backgroundColor: "white" }}>
             <div className="header-left">
@@ -17,7 +18,7 @@ function Header() {
 
                 <div className="header-search">
                     <SearchIcon />
-                    <input type="text" />
+                    <input type="text" value={inputValue} onChange={event => setInputValue(event.target.value)} />
                 </div>
             </div>
             <div className="header-right">

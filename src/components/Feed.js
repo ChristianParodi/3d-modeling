@@ -3,16 +3,52 @@ import './Feed.css'
 import Product from './Product'
 
 import { db } from './firebase.js'
-import firebase from 'firebase/compat/app'
 
 import Grid from '@mui/material/Grid'
+import { FireSQL } from 'firesql'
 
-function Feed() {
+function Feed({ searched }) {
     const [products, setProducts] = useState([])
 
-    /* when the page loads, connect to db */
+    /* const uploadProduct = () => {
+        db.collection('products').add({
+            name: 'Terzo prodotto',
+            description: 'Questo è il terzo prodotto per il testing',
+            image: 'default.jpg',
+            price: 0,
+            date: firebase.firestore.FieldValue.serverTimestamp()
+        })
+    } */
+
+    const loadProducts = async(searchValue = "") => {
+        const fireSQL = new FireSQL(db)
+        let query = `SELECT * FROM products`
+        if(searchValue !== '')
+            query += ` WHERE name LIKE '${searchValue}%'`
+            
+        const documents = await fireSQL.query(query, { includeId: 'id'})
+
+        const docs = documents.map(doc => (
+            {
+                id: doc.id,
+                data: doc
+            }
+        ))
+
+        docs.map(doc => delete doc.data['id'])
+
+        setProducts(
+            docs.map(doc => (
+                {
+                    id: doc.id,
+                    data: doc.data
+                }
+            ))
+        )
+    }
+/* when the page loads, connect to db and load the latest products */
     useEffect(() => {
-        db.collection('products').onSnapshot(snapshot =>
+        /* db.collection('products').orderBy('date', 'desc').onSnapshot(snapshot =>
             setProducts(
                 snapshot.docs.map(doc => (
                     {
@@ -21,21 +57,36 @@ function Feed() {
                     }
                 ))
             )
-        )
+        ) */
+        loadProducts()
     }, [])
 
-    const uploadProduct = e => {
-        e.preventDefault()
-
-        db.collection('products').add({
-            name: "Primo prodotto",
-            description: "Questo è il primo prodotto aggiunto nel db",
-            image: "",
-            price: 0,
-            date: firebase.firestore.FieldValue.serverTimestamp()
-        })
-    }
-
+    useEffect(() => {
+        if(searched === ''){
+            loadProducts()
+            return
+        }
+            
+        
+        /*
+            Firestore does'nt support indexing, so 
+            the solution is to search for the name client side.
+            This isn't practical but our database is not so huge
+        */
+        const fetchData = async () => {
+            const allProducts = await db.collection('products').get()
+            const searchedArray = []
+            allProducts.docs.forEach(doc => {
+                if((doc.data().name).includes(searched))
+                    searchedArray.push({ id: doc.id, data: doc.data() })
+            })
+            
+            setProducts(searchedArray)
+        }
+        
+        fetchData()
+    }, [searched])
+    
     return (
         <div className="feed">
             <Grid
@@ -61,7 +112,7 @@ function Feed() {
                     })
                 }
             </Grid>
-
+            {/* <Button onClick={uploadProduct} variant="contained">Prova</Button> */}
         </div>
     )
 }
