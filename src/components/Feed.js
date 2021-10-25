@@ -20,33 +20,38 @@ function Feed({ searched }) {
         })
     } */
 
-    const loadProducts = async(searchValue = "") => {
-        const fireSQL = new FireSQL(db)
-        let query = `SELECT * FROM products`
-        if(searchValue !== '')
-            query += ` WHERE name LIKE '${searchValue}%'`
-            
-        const documents = await fireSQL.query(query, { includeId: 'id'})
+    const loadProducts = async (searchValue = "") => {
+        const allProducts = await db.collection('products').get()
 
-        const docs = documents.map(doc => (
-            {
-                id: doc.id,
-                data: doc
-            }
-        ))
+        if (searchValue === '')
+            setProducts(
+                allProducts.docs.map(doc => (
+                    {
+                        id: doc.id,
+                        data: doc.data()
+                    }
+                ))
+            )
+        else {
+            /*
+                Else we have to include all those docs where the name 
+                contains searchValue. Ehiter lower or uppercase
+            */
+            const newDocs = allProducts.docs.map(doc => {
+                if ((doc.data().name).includes(searchValue) ||
+                    (doc.data().name).includes(searchValue.charAt(0).toUpperCase() + searchValue.substr(1)))
+                    return {
+                        id: doc.id,
+                        data: doc.data()
+                    }
+                else
+                    return {}
+            }).filter(value => Object.keys(value).length !== 0)
 
-        docs.map(doc => delete doc.data['id'])
-
-        setProducts(
-            docs.map(doc => (
-                {
-                    id: doc.id,
-                    data: doc.data
-                }
-            ))
-        )
+            setProducts(newDocs)
+        }
     }
-/* when the page loads, connect to db and load the latest products */
+    /* when the page loads, connect to db and load the latest products */
     useEffect(() => {
         /* db.collection('products').orderBy('date', 'desc').onSnapshot(snapshot =>
             setProducts(
@@ -62,31 +67,32 @@ function Feed({ searched }) {
     }, [])
 
     useEffect(() => {
-        if(searched === ''){
+        /* if (searched === '') {
             loadProducts()
             return
         }
-            
-        
+
+
         /*
             Firestore does'nt support indexing, so 
             the solution is to search for the name client side.
             This isn't practical but our database is not so huge
-        */
+        
         const fetchData = async () => {
             const allProducts = await db.collection('products').get()
             const searchedArray = []
             allProducts.docs.forEach(doc => {
-                if((doc.data().name).includes(searched))
+                if ((doc.data().name).includes(searched))
                     searchedArray.push({ id: doc.id, data: doc.data() })
             })
-            
+
             setProducts(searchedArray)
-        }
-        
-        fetchData()
+        } */
+
+        // fetchData()
+        loadProducts(searched)
     }, [searched])
-    
+
     return (
         <div className="feed">
             <Grid
@@ -100,12 +106,12 @@ function Feed({ searched }) {
                     products.map((elem, index) => {
                         return (
                             <Grid item key={index} xs={12} sm={12} md={6} lg={4} xl={3}>
-                                <Product 
+                                <Product
                                     name={elem.data.name}
                                     description={elem.data.description}
                                     image={elem.data.image}
                                     price={elem.data.price}
-                                    date={elem.data.date}  
+                                    date={elem.data.date}
                                 />
                             </Grid>
                         )
