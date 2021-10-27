@@ -71,7 +71,7 @@ export default function Filter() {
                 aria-labelledby="nested-list-filter"
             >
                 {/* Filter collapse */}
-                <ListItemButton onClick={handleFilterClick}>
+                <ListItemButton onClick={handleFilterClick} className="filter-button">
                     <ListItemIcon>
                         <FilterListIcon />
                     </ListItemIcon>
@@ -125,7 +125,7 @@ export default function Filter() {
                     </Menu>
                     {/* end Order by */}
                     {/* Category */}
-                    <ListItemButton onClick={handleCategoryClick}>
+                    <ListItemButton onClick={handleCategoryClick} className="filter-button">
                         <ListItemIcon>
                             <CategoryIcon />
                         </ListItemIcon>
@@ -133,7 +133,7 @@ export default function Filter() {
                         {openCategory ? <ExpandLess /> : <ExpandMore />}
                     </ListItemButton>
                     <Collapse in={openCategory} timeout="auto" unmountOnExit>
-                        <List component="div" disablePadding>
+                        <List component="div">
                             <ListItemButton sx={{ pl: 10 }}>
                                 <ListItemIcon >
                                     <img src={marvel_logo} alt="Marvel" className="filter-item-logo" />

@@ -5,7 +5,6 @@ import Product from './Product'
 import { db } from './firebase.js'
 
 import Grid from '@mui/material/Grid'
-import { FireSQL } from 'firesql'
 
 function Feed({ searched }) {
     const [products, setProducts] = useState([])
