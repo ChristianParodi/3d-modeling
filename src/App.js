@@ -14,9 +14,9 @@ function App() {
   return (
     <div className="app">
       <Header inputValue={inputValue} setInputValue={setInputValue}/>
-      <Slider />
       
       <Container fixed maxWidth="xl" style={{ backgroundColor: "white", height: "100vh" }}>
+        <Slider />
         <div className="app-body">
           <Feed searched={inputValue}/>
           <Filter />

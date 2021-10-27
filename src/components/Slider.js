@@ -18,7 +18,7 @@ function Slider()
     ]
 
     return (
-        <div style={{ backgroundColor: "white"}}>
+        <div style={{ backgroundColor: "white", paddingTop: "10px" }}>
             <Carousel animation="slide">
                 {
                     items.map((item, index) => <Item key={index} item={item} />)
