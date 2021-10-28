@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&display=swap");
-
 html,
 body {
   height: 100%;
@@ -15,4 +13,16 @@ body {
 .app-body {
   display: flex;
   margin-top: 10px;
+}
+
+#app-wrapper {
+  height: 100vh;
+  min-height: 100vh;
+}
+
+@media only screen and (max-width: 900px) {
+  #app-wrapper {
+    height: 100% !important;
+    min-height: 100vh !important;
+  }
 }

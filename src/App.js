@@ -5,6 +5,12 @@ import Filter from './components/Filter';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Feed from './components/Feed';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 import { db } from './components/firebase.js'
 
@@ -80,14 +86,14 @@ function App() {
   }, [inputValue])
 
   useEffect(() => {
-    loadProducts(inputValue, filters)
+    loadProducts('', filters)
   }, [filters])
 
   return (
     <div className="app">
       <Header inputValue={inputValue} setInputValue={setInputValue}/>
       
-      <Container fixed maxWidth="xl" style={{ backgroundColor: "white", height: "100%", paddingBottom: "5px" }}>
+      <Container id="app-wrapper" fixed maxWidth="xl" style={{ backgroundColor: "white", paddingBottom: "5px" }}>
         <Slider />
         <div className="app-body">
           <Feed products={products} />

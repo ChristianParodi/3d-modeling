@@ -81,14 +81,16 @@ export default function Filter(props) {
 
     /* Price */
     const handlePriceChange = (e, value) => {
-        if(value === '')
-            return
-
         let newPrice
-        if(e.target.id === 'price-min')
-            newPrice = [value, price[1]]
-        else
-            newPrice = [price[0], value]
+
+        if(value === '')
+            newPrice = [0, 500]
+        else {
+            if(e.target.id === 'price-min')
+                newPrice = [value, price[1]]
+            else
+                newPrice = [price[0], value]
+        }
         
         setPrice(newPrice)
 
