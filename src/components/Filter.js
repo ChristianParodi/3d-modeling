@@ -9,7 +9,8 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListItem from '@mui/material/ListItem';
-import Slider from '@mui/material/Slider';
+/* import Button from '@material-ui/core/Button' */
+import { InputAdornment, TextField } from '@mui/material'
 import Collapse from '@mui/material/Collapse';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
@@ -20,13 +21,14 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import CategoryIcon from '@mui/icons-material/Category';
 import EuroIcon from '@mui/icons-material/Euro';
 import ReorderIcon from '@mui/icons-material/Reorder';
+/* import SearchIcon from '@mui/icons-material/Search' */
 
-export default function Filter() {
-    const [openCategory, setOpenCategory] = useState(false);
+export default function Filter(props) {
     const [openFilter, setOpenFilter] = useState(false);
+    const [openCategory, setOpenCategory] = useState(false);
     const [selectedMenuIndex, setSelectedMenuIndex] = useState(0)
     const [anchorEl, setAnchorEl] = useState(null)
-    const [price, setPrice] = React.useState([0, 100]);
+    const [price, setPrice] = React.useState([0, 300]);
 
     const menuOpen = Boolean(anchorEl)
 
@@ -44,10 +46,29 @@ export default function Filter() {
         setOpenCategory(openCategory => !openCategory);
     };
 
+    const selectCategoryFilter = (category) => {
+        const newFilters = {
+            orderBy: props.filters.orderBy,
+            category: category,
+            price: props.filters.price
+        }
+
+        console.log(newFilters)
+    }
+
     /* Menu interaction */
-    const handleMenuItemClick = (_, index) => {
+    const handleMenuItemClick = (e, index) => {
         setSelectedMenuIndex(index)
         setAnchorEl(null)
+
+        const newOrderBy = (index === 0 ? "date desc" : index === 1 ? "price asc" : "price desc")
+        const newFilters = {
+            orderBy: newOrderBy,
+            category: props.filters.category,
+            price: props.filters.price
+        }
+
+        props.setFilters(newFilters)
     }
 
     const handleClickMenuListItem = (event) => {
@@ -58,9 +79,29 @@ export default function Filter() {
         setAnchorEl(null)
     }
 
-    /* Price slider */
-    const handlePriceChange = (event, newPrice) => {
-        setPrice(newPrice);
+    /* Price */
+    const handlePriceChange = (e, value) => {
+        if(value === '')
+            return
+
+        let newPrice
+        if(e.target.id === 'price-min')
+            newPrice = [value, price[1]]
+        else
+            newPrice = [price[0], value]
+        
+        setPrice(newPrice)
+
+        const newFilters = {
+            orderBy: props.filters.orderBy,
+            category: props.filters.category,
+            price: {
+                min: parseInt(newPrice[0]),
+                max: parseInt(newPrice[1])
+            }
+        }
+
+        props.setFilters(newFilters)
     };
 
     return (
@@ -118,6 +159,7 @@ export default function Filter() {
                                 key={index}
                                 selected={index === selectedMenuIndex}
                                 onClick={(event) => handleMenuItemClick(event, index)}
+                                style={{ display: "block", padding: "10px" }}
                             >
                                 {option}
                             </MenuItem>
@@ -134,13 +176,13 @@ export default function Filter() {
                     </ListItemButton>
                     <Collapse in={openCategory} timeout="auto" unmountOnExit>
                         <List component="div">
-                            <ListItemButton sx={{ pl: 10 }}>
+                            <ListItemButton sx={{ pl: 10 }} onClick={() => selectCategoryFilter("marvel")} >
                                 <ListItemIcon >
                                     <img src={marvel_logo} alt="Marvel" className="filter-item-logo" />
                                 </ListItemIcon>
                                 <ListItemText primary="Marvel" />
                             </ListItemButton>
-                            <ListItemButton sx={{ pl: 10 }}>
+                            <ListItemButton sx={{ pl: 10 }} onClick={() => selectCategoryFilter("dc_comics")} >
                                 <ListItemIcon>
                                     <img src={dc_logo} alt="DC" className="filter-item-logo" />
                                 </ListItemIcon>
@@ -149,7 +191,7 @@ export default function Filter() {
                         </List>
                     </Collapse>
                     {/* end Category */}
-                    {/* Price slider */}
+                    {/* Price */}
                     <ListItemText>
                         <div className="price-container">
                             <div className="price-filter">
@@ -158,21 +200,48 @@ export default function Filter() {
                                 </ListItemIcon>
                                 <ListItemText primary="Prezzo" />
                             </div>
-                            <div className="slider">
-                                <Slider
-                                    getAriaLabel={() => 'Price range'}
-                                    value={price}
-                                    onChange={handlePriceChange}
-                                    valueLabelDisplay="auto"
-                                    getAriaValueText={price => `${price}€`}
-                                />
+                            <div className="price-selector">
+                                <div className="price-min">
+                                    <TextField 
+                                        id="price-min" 
+                                        label="Da" 
+                                        variant="outlined"
+                                        type="number"
+                                        onChange={(e) => handlePriceChange(e, e.target.value)} 
+                                        InputProps={{
+                                            startAdornment: <InputAdornment position="start">€</InputAdornment>,
+                                        }}
+                                    />
+                                </div>
+                                <div className="price-max">
+                                    <TextField 
+                                        id="price-max" 
+                                        label="A" 
+                                        variant="outlined"
+                                        type="number"
+                                        onChange={(e) => handlePriceChange(e, e.target.value)}
+                                        InputProps={{
+                                            startAdornment: <InputAdornment position="start">€</InputAdornment>,
+                                        }} 
+                                    />
+                                </div>
                             </div>
                         </div>
                     </ListItemText>
-                    {/* end Price slider */}
+                    {/* end Price */}
+                    {/* <div className="button-container">
+                        <Button 
+                            variant="contained" 
+                            color="primary" 
+                            disableElevation 
+                            endIcon={<SearchIcon />}
+                            onClick={handlePriceChange}
+                        >
+                            cerca
+                        </Button>
+                    </div> */}
                 </Collapse>
                 {/* end Filter collapse */}
-
             </List>
         </div>
 

@@ -6,7 +6,7 @@
   border: 1px solid lightgray;
   border-radius: 10px;
   margin: 10px;
-  min-width: 210px;
+  min-width: 230px;
   padding: 0 10px;
 }
 
@@ -29,15 +29,31 @@
   margin-left: 10px;
 }
 
-.price-container {
-  margin-left: 16px;
-}
-
 .price-filter {
   display: flex;
   align-items: center;
 }
 
-.slider {
-  margin-right: 16px;
+.price-selector {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price-min,
+.price-max {
+  width: 60%;
+  min-width: 40px;
+  margin: 10px 5px;
+}
+
+#price-min,
+#price-max {
+  height: 15px;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-bottom: 5px;
 }
