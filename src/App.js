@@ -5,11 +5,13 @@ import Filter from './components/Filter';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Feed from './components/Feed';
+
+import About from './About'
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
-  Link
+  Switch,
+  Redirect
 } from "react-router-dom";
 
 import { db } from './components/firebase.js'
@@ -56,7 +58,6 @@ function App() {
     } else if(searchValue === '' && selectedFilters !== null) {
       const orderBy = selectedFilters.orderBy.split(" ")
       
-      console.log(selectedFilters)
       db.collection('products')
       .orderBy(orderBy[0], orderBy[1])
       .onSnapshot(snapshot =>
@@ -90,18 +91,29 @@ function App() {
   }, [filters])
 
   return (
-    <div className="app">
-      <Header inputValue={inputValue} setInputValue={setInputValue}/>
-      
-      <Container id="app-wrapper" fixed maxWidth="xl" style={{ backgroundColor: "white", paddingBottom: "5px" }}>
-        <Slider />
-        <div className="app-body">
-          <Feed products={products} />
-          <Filter filters={filters} setFilters={setFilters}/>
-        </div>
-      </Container>
-      <Footer />
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Redirect to="/home" />
+        </Route>
+        <Route path="/home">
+          <div className="app">
+            <Header inputValue={inputValue} setInputValue={setInputValue}/>
+            
+            <Container id="app-wrapper" fixed maxWidth="xl" style={{ backgroundColor: "white", paddingBottom: "5px" }}>
+              <Slider />
+              <div className="app-body">
+                <Feed products={products} />
+                <Filter filters={filters} setFilters={setFilters}/>
+              </div>
+            </Container>
+            <Footer />
+          </div>
+        </Route>
+        <Route path="/about" component={() => <About />}>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

@@ -1,3 +1,7 @@
+* {
+  text-decoration: none;
+}
+
 html,
 body {
   height: 100%;
@@ -15,13 +19,19 @@ body {
   margin-top: 10px;
 }
 
-#app-wrapper {
+.app-about-body {
+  padding: 10px;
+}
+
+#app-wrapper,
+#app-about-wrapper {
   height: 100vh;
   min-height: 100vh;
 }
 
 @media only screen and (max-width: 900px) {
-  #app-wrapper {
+  #app-wrapper,
+  #app-about-wrapper {
     height: 100% !important;
     min-height: 100vh !important;
   }
