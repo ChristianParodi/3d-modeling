@@ -1,0 +1,13 @@
+#app-product-wrapper {
+    height: 100vh;
+}
+
+.img-container {
+    height: 200px;
+    width: 100px;
+}
+
+.img-container > img {
+    object-fit: contain;
+    height: 200px;
+}

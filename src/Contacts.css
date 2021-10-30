@@ -1,3 +1,7 @@
+#app-contacts-wrapper {
+    height: 60vh;
+}
+
 .app-contacts-body {
     margin-top: 10px;
 }

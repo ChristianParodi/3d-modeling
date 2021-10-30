@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Feed from './components/Feed';
 import Contacts from './Contacts';
 import About from './About'
+import ProductPage from './components/ProductPage';
 
 import {
   BrowserRouter as Router,
@@ -115,8 +116,10 @@ function App() {
         </Route>
         <Route path="/contacts" component={() => <Contacts />}>
         </Route>
+        <Route path="/p/:productid" component={() => <ProductPage />} >
+        </Route>
       </Switch>
-    </Router>
+    </Router >
   );
 }
 

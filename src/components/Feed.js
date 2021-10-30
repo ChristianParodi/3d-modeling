@@ -4,6 +4,10 @@ import Product from './Product'
 
 import Grid from '@mui/material/Grid'
 
+import {
+    Link
+} from 'react-router-dom'
+
 function Feed({ products }) {
     /* const uploadProduct = () => {
         db.collection('products').add({
@@ -20,7 +24,7 @@ function Feed({ products }) {
             <Grid
                 container
                 spacing={3}
-                justifyContent="space-between"
+                justifyContent="space-evenly"
                 direction="row"
                 alignItems="center"
             >
@@ -28,13 +32,16 @@ function Feed({ products }) {
                     products.map((elem, index) => {
                         return (
                             <Grid item key={index} xs={12} sm={12} md={6} lg={4} xl={3}>
-                                <Product
-                                    name={elem.data.name}
-                                    description={elem.data.description}
-                                    image={elem.data.image}
-                                    price={elem.data.price}
-                                    date={elem.data.date}
-                                />
+                                <Link to={`/p/${elem.id}`}>
+                                    <Product
+                                        id={elem.id}
+                                        name={elem.data.name}
+                                        description={elem.data.description}
+                                        image={elem.data.image}
+                                        price={elem.data.price}
+                                        date={elem.data.date}
+                                    />
+                                </Link>
                             </Grid>
                         )
                     })

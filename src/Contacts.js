@@ -4,7 +4,7 @@ import Footer from './components/Footer'
 import './App.css'
 import './Contacts.css'
 
-import { Button, Container, Grid, Typography } from '@mui/material'
+import { Container, Grid, Typography } from '@mui/material'
 
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -12,10 +12,10 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import TextField from '@mui/material/TextField';
+//import TextField from '@mui/material/TextField';
 
 import EmailIcon from '@mui/icons-material/Email';
-import SendIcon from '@mui/icons-material/Send';
+// import SendIcon from '@mui/icons-material/Send';
 
 function Contacts() {
     return (
@@ -81,15 +81,15 @@ function Contacts() {
                                 </ListItem>
                             </List>
                         </Grid>
-                        <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
+                        {/* <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
                             <Typography variant="h4" component="h3">
                                 Richiedi assistenza
                             </Typography>
-                            <div className="subject-container">
-                                <TextField required fullWidth margin="normal" id="subject" label="Oggetto" variant="outlined" />
-                            </div>
                             <div className="name-container">
-                                <TextField required fullWidth id="name" label="Nome" variant="outlined" />
+                                <TextField fullWidth margin="dense" id="name" label="Nome" variant="outlined" />
+                            </div>
+                            <div className="phone-container">
+                                <TextField required fullWidth margin="dense" id="phone" type="number" label="Telefono" variant="outlined" />
                             </div>
                             <div className="body-container">
                                 <TextField
@@ -104,7 +104,7 @@ function Contacts() {
                                 />
                             </div>
                             <Button variant="contained" endIcon={<SendIcon />}>invia</Button>
-                        </Grid>
+                        </Grid> */}
                     </Grid>
                 </div>
             </Container>
