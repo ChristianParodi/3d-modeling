@@ -8,7 +8,8 @@
   background-color: white;
 }
 
-.header-option:hover {
+.header-option:hover,
+.header-option:active {
   color: black;
 }
 

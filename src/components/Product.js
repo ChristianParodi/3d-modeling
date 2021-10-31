@@ -20,7 +20,7 @@ function Product(props) {
                 <CardMedia 
                     component="img"
                     height="150"
-                    image={`/images/${props.image}`}
+                    image={`/images/${props.image[0]}`}
                     alt={`"${props.name}" image`}
                 />
                 <CardContent>

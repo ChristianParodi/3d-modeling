@@ -13,7 +13,6 @@ import {
 } from "react-router-dom";
 
 function Header({ inputValue, setInputValue }) {
-
     return (
         <div className="header" style={{ backgroundColor: "white" }}>
             <div className="header-left">
