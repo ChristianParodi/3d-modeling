@@ -34,23 +34,23 @@ function ProductPage() {
     return (
         <div>
             <Header />
-            <Container id="app-product-wrapper" fixed maxWidth="xl" style={{ backgroundColor: "white", paddingBottom: "5px", height: "100vh" }}>
+            <Container id="app-product-wrapper" fixed maxWidth="xl" style={{ backgroundColor: "white", paddingBottom: "5px" }}>
                 <div className="app-product-body">
                     <Grid
                         container
                         spacing={2}
                         direction="row"
                         justifyContent="space-between"
-                        style={{ paddingTop: "10px" }}
+                        style={{ paddingTop: "10px", display: "block" }}
                     >
                         {product && (
                             <>
                                 <Grid item xs={12} sm={12} md={12} lg={12} xl={6}>
                                     <div className="img-container">
-                                        <img src={`/images/${image}`} alt={`${product.name}`} style={{ objectFit: "cover", maxHeight: "600px", height: "600px", width: "100%"}} />
+                                        <img src={`/images/${image}`} alt={`${product.name}`} style={{ objectFit: "cover", maxHeight: "300px", height: "300px", width: "100%"}} />
                                     </div>
                                     <ImageList sx={{ width: "100%", height: "100%" }} cols={product.image.length} rowHeight={200}>
-                                        {product.image.map((item) => (
+                                        {product.image.length !== 1 && (product.image.map((item) => (
                                             <ImageListItem key={item} style={{ cursor: "pointer" }}>
                                                 <img
                                                     src={`/images/${item}`}
@@ -61,7 +61,7 @@ function ProductPage() {
                                                     onClick={() => setImage(item)}
                                                 />
                                             </ImageListItem>
-                                        ))}
+                                        )))}
                                     </ImageList>
                                 </Grid>
                                 <Grid item xs={12} sm={12} md={12} lg={12} xl={6}>

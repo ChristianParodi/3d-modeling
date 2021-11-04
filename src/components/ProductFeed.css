@@ -1,0 +1,12 @@
+.app-product-feed-body {
+  display: flex;
+  padding-top: 1em;
+}
+
+@media only screen and (max-width: 600px) {
+  .app-product-feed-body {
+    position: relative;
+    display: block;
+    padding-top: 1em;
+  }
+}

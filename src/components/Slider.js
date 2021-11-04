@@ -32,7 +32,7 @@ function Item(props)
 {
     return (
         <Box component="div" sx={{ height: "350px"}} className="slide-box">
-            <img src="/images/slider_image.jpg" alt="default" height="400" width="100%"/>
+            <img src="/images/slider_image.jpg" alt="default" height="100%" width="100%"/>
         </Box>
     )
 }

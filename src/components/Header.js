@@ -5,7 +5,6 @@ import HeaderOption from './HeaderOption'
 
 import SearchIcon from '@mui/icons-material/Search'
 import HomeIcon from '@mui/icons-material/Home'
-import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import {
@@ -16,7 +15,9 @@ function Header({ inputValue, setInputValue }) {
     return (
         <div className="header" style={{ backgroundColor: "white" }}>
             <div className="header-left">
-                <img src={logo} alt="brand logo" />
+                <div className="img-container">
+                    <img src={logo} alt="brand logo" />
+                </div>
 
                 <div className="header-search">
                     <SearchIcon />
@@ -27,10 +28,7 @@ function Header({ inputValue, setInputValue }) {
                 <Link to="/home">
                     <HeaderOption title="Home" Icon={HomeIcon} />
                 </Link>
-                <Link to="/about">
-                    <HeaderOption title="Chi siamo" Icon={SupervisorAccountIcon} />
-                </Link>
-                <Link to="/home">
+                <Link to="/p/">
                     <HeaderOption title="Prodotti" Icon={ShoppingCartIcon} />
                 </Link>
                 <Link to="/contacts">

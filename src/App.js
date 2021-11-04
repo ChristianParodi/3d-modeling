@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Slider from './components/Slider'
-import Filter from './components/Filter';
+import ProductFeed from './components/ProductFeed';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Feed from './components/Feed';
 import Contacts from './Contacts';
-import About from './About'
 import ProductPage from './components/ProductPage';
 
 import {
@@ -23,7 +22,6 @@ import { Container } from '@mui/material'
 function App() {
   const [inputValue, setInputValue] = useState("")
   const [products, setProducts] = useState([])
-  const [filters, setFilters] = useState({ orderBy: "date desc", category: undefined, price: { min: 0, max: 100000 } })
 
   const loadProducts = async (searchValue = "", selectedFilters = null) => {
     const allProducts = await db.collection('products').get()
@@ -88,10 +86,6 @@ function App() {
     loadProducts(inputValue)
   }, [inputValue])
 
-  useEffect(() => {
-    loadProducts('', filters)
-  }, [filters])
-
   return (
     <Router>
       <Switch>
@@ -106,17 +100,16 @@ function App() {
               <Slider />
               <div className="app-body">
                 <Feed products={products} />
-                <Filter filters={filters} setFilters={setFilters} />
               </div>
             </Container>
             <Footer />
           </div>
         </Route>
-        <Route path="/about" component={() => <About />}>
-        </Route>
         <Route path="/contacts" component={() => <Contacts />}>
         </Route>
         <Route path="/p/:productid" component={() => <ProductPage />} >
+        </Route>
+        <Route to="/p/" component={() => <ProductFeed />}>
         </Route>
       </Switch>
     </Router >

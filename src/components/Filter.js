@@ -109,7 +109,7 @@ export default function Filter(props) {
     return (
         <div className="filter">
             <List
-                sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+                sx={{ width: '100e%', maxWidth: 360, bgcolor: 'background.paper' }}
                 component="div"
                 aria-labelledby="nested-list-filter"
             >
@@ -178,18 +178,22 @@ export default function Filter(props) {
                     </ListItemButton>
                     <Collapse in={openCategory} timeout="auto" unmountOnExit>
                         <List component="div">
-                            <ListItemButton sx={{ pl: 10 }} onClick={() => selectCategoryFilter("marvel")} >
-                                <ListItemIcon >
-                                    <img src={marvel_logo} alt="Marvel" className="filter-item-logo" />
-                                </ListItemIcon>
-                                <ListItemText primary="Marvel" />
-                            </ListItemButton>
-                            <ListItemButton sx={{ pl: 10 }} onClick={() => selectCategoryFilter("dc_comics")} >
-                                <ListItemIcon>
-                                    <img src={dc_logo} alt="DC" className="filter-item-logo" />
-                                </ListItemIcon>
-                                <ListItemText primary="DC Comics" />
-                            </ListItemButton>
+                            <div style={{ marginLeft: 10}} >
+                                <ListItemButton sx={{ pl: 10 }} onClick={() => selectCategoryFilter("marvel")} >
+                                    <ListItemIcon >
+                                        <img src={marvel_logo} alt="Marvel" className="filter-item-logo" />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Marvel" />
+                                </ListItemButton>
+                            </div>
+                            <div style={{ marginLeft: 10}} >
+                                <ListItemButton sx={{ pl: 10 }} onClick={() => selectCategoryFilter("dc_comics")} >
+                                    <ListItemIcon>
+                                        <img src={dc_logo} alt="DC" className="filter-item-logo" />
+                                    </ListItemIcon>
+                                    <ListItemText primary="DC Comics" />
+                                </ListItemButton>
+                            </div>
                         </List>
                     </Collapse>
                     {/* end Category */}

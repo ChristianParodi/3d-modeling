@@ -1,8 +1,5 @@
 .feed {
   width: 100%;
-  flex: 0.8;
-  margin: 10px;
-  top: 80px;
 }
 
 @media only screen and (max-width: 600px) {
