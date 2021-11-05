@@ -8,16 +8,16 @@ import Box from '@mui/material/Box'
 
 function Product(props) {
     const [shadow, setShadow] = useState(1)
-    
+
     return (
         <Box
-            sx={{ boxShadow: shadow, minWidth: "240px" }}
+            sx={{ boxShadow: shadow, minWidth: "240px", heigth: "300px" }}
             onMouseOver={() => setShadow(5)}
             onMouseOut={() => setShadow(1)}
             style={{ cursor: "pointer", display: "block" }}
         >
             <Card>
-                <CardMedia 
+                <CardMedia
                     component="img"
                     height="150"
                     image={`/images/${props.image[0]}`}
@@ -28,7 +28,7 @@ function Product(props) {
                         {props.name}
                     </Typography>
                     <Typography variant="body2" color="text.primary">
-                        {props.description}
+                        {props.description.length <= 70 ? props.description : props.description.substr(0, 60) + "..."}
                     </Typography>
                 </CardContent>
                 <CardActions>

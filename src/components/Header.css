@@ -18,7 +18,7 @@
   margin-left: 10px;
 }
 
-.header-left > .img-container > img {
+.header-left > * > .img-container > img {
   object-fit: contain;
   height: 40px;
   margin-right: 10px;

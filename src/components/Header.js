@@ -15,9 +15,11 @@ function Header({ inputValue, setInputValue }) {
     return (
         <div className="header" style={{ backgroundColor: "white" }}>
             <div className="header-left">
-                <div className="img-container">
-                    <img src={logo} alt="brand logo" />
-                </div>
+                <Link to="/home">
+                    <div className="img-container">
+                        <img src={logo} alt="brand logo" />
+                    </div>
+                </Link>
 
                 <div className="header-search">
                     <SearchIcon />
