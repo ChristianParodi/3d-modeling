@@ -16,14 +16,14 @@ function Product(props) {
             onMouseOut={() => setShadow(1)}
             style={{ cursor: "pointer", display: "block" }}
         >
-            <Card>
+            <Card sx={{height: "300px"}}>
                 <CardMedia
                     component="img"
                     height="150"
                     image={`/images/${props.image[0]}`}
                     alt={`"${props.name}" image`}
                 />
-                <CardContent>
+                <CardContent sx={{ height: "4em"}}>
                     <Typography gutterBottom variant="h5" component="div">
                         {props.name}
                     </Typography>
@@ -32,7 +32,7 @@ function Product(props) {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Typography variant="h6" component="div">
+                    <Typography variant="h6" component="div" sx={{ padding: "0 .5em"}}>
                         € {props.price}
                     </Typography>
                 </CardActions>
